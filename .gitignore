@@ -20,4 +20,7 @@
 !/log/.keep
 /tmp
 
-
+# Ignore Vim temp files
+*.swp
+*.swo
+*.swn

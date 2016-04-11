@@ -38,15 +38,21 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => '',
-    :password => '',
-    :address => 'mailtrap.io',
-    :domain => 'mailtrap.io',
-    :port => '2525',
-    :authentication => :cram_md5,
+    :user_name => ENV['EMAIL_USERNAME'],
+    :password => ENV['EMAIL_PASSWORD'],
+    :address => 'smtp.gmail.com',
+    :domain => 'example.com',
+    :port => '587',
+    :authentication => :plain,
     :enable_starttls_auto => true
   }
 
+  # Devise config
+  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
+
+  # In development, sending mails is prevented by default. This enables it.
+  config.action_mailer.perform_deliveries = true
+  
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -38,6 +38,9 @@ gem 'slim'
 
 gem 'draper'
 
+# Authentication gem
+gem 'devise'
+
 gem 'rails_12factor'
 
 group :development, :test do
