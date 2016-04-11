@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 padding -top -bottom -small">
+    <h1>Welcome</h1>
+
+    <table class="table">
+      <body>
+        <% @profiles.each do |profile| %>
+          <tr>
+            <td><%= profile.user_id %></td>
+            <td><%= profile.first_name %></td>
+            <td><%= profile.last_name %></td>
+            <td><%= link_to('Verify', profile_mail_path(profile)) %>
+            </td> 
+          </tr>
+        <% end %>
+      </body>
+    </table>
+  </div>
+</div>
