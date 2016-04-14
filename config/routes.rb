@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  } 
+  
   root to: 'pages#welcome'
 
-  get '/profiles/:id', :to => 'profiles#mail', :as => 'profile_mail'
-
-  resources :profiles, :only => [:show]
+  resources :profiles, :only => [:show] do
+    get '/verify', :to => 'profiles#verify', :as => 'verify'
+  end
 
 end

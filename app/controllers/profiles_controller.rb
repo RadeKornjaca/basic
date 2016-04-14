@@ -5,13 +5,12 @@ class ProfilesController < ApplicationController
 
   end
 
-  def mail
-    @profile = Profile.find(params[:id])
+  def verify
+    @profile = Profile.find(params[:profile_id])
 
-    mail_worker = MailWorker.new
-    mail_worker.perform("UserMailer", "welcome_email", @profile.user_id)
+    @profile.send_verify_email(@profile.user)
 
-    redirect_to(root_path)
+    head :ok
   end
 
 end
