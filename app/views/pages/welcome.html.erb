@@ -9,7 +9,7 @@
             <td><%= profile.user_id %></td>
             <td><%= profile.first_name %></td>
             <td><%= profile.last_name %></td>
-            <td><%= link_to('Verify', profile_mail_path(profile)) %>
+            <td><%= button_to('Verify', profile_verify_path(profile), :method => :get, :remote => true) %>
             </td> 
           </tr>
         <% end %>
